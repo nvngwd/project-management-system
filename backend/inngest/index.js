@@ -66,15 +66,15 @@ const syncWorkspaceCreation=inngest.createFunction(
                 image_url:data.image_url,
             }
         })
-    })
 
-    //add creator as admin member of workspace
-    await prisma.workspaceMember.create({
-        data:{
-            userId:data.created_by,
-            workspaceId:data.id,
-            role:"ADMIN"
-        }
+        //add creator as admin member of workspace
+        await prisma.workspaceMember.create({
+            data:{
+                userId:data.created_by,
+                workspaceId:data.id,
+                role:"ADMIN"
+            }
+        })
     })
 
     //INNGEST FUNCTION TO UPDATE WORKSPACE DATA IN DATABASE
